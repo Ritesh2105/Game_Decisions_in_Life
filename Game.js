@@ -110,6 +110,7 @@ module.exports = class Game{
                     this.stateCur = GameState.WELCOMING;
                 }else{
                     sReply = "THE END!!";
+                    break;
                 }
         }
         return([sReply]);
