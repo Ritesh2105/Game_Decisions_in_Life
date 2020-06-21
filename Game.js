@@ -19,38 +19,38 @@ module.exports = class Game{
         let sReply = "";
         switch(this.stateCur){
             case GameState.WELCOMING:
-                sReply = "You are in class 10th. Its time to decide which field you want to choose? Do you choose MATHS or BIOLOGY or COMMERCE?";
+                sReply = "I am Sam. I am Creation of Mr. Ritesh Saxena. Lets play the game. Assume, You are in class 10th. Its time to decide which field you want to choose? Do you choose MATHS or BIOLOGY or COMMERCE?";
                 this.stateCur = GameState.QUESTION;
                 break;
             case GameState.QUESTION:
                 if(sInput.toLowerCase().match("maths")){
-                    sReply = "Its hard and challenging field. and now a days there are many engineers, so do you still wants to CHOOSE MATHS?";
+                    sReply = "Its hard and challenging field. and now a days there are many engineers, so do you still wants to choose MATHS?";
                     this.stateCur = GameState.TENTH;
                 }else if(sInput.toLowerCase().match("biology")){
-                    sReply = "Becoming a good doctor is very tough now a days and very costly also. Do you really want to CHOOSE BIOLOGY or want to change the subject?";
+                    sReply = "Becoming a good doctor is very tough now a days and very costly also. Do you really want to choose BIOLOGY?";
                     this.stateCur = GameState.TENTH;
                 }else if(sInput.toLowerCase().match("commerce")){
-                    sReply = "Commerce? Seriously? People will judge you? Juniors won't respect you? Are you sure you want to CHOOSE COMMERCE?";
+                    sReply = "Commerce? Seriously? People will judge you? Juniors won't respect you? Are you sure you want to choose COMMERCE?";
                     this.stateCur = GameState.TENTH;
                 }
                 else{
-                    sReply ="Do you want to do any thing in life or not?";
-                    this.stateCur = GameState.TENTH;
+                    sReply ="Do you want to do any thing in life or not? Choose Something, MATHS, BIOLOGY, COMMERCE";
+                    this.stateCur = GameState.QUESTION;
                 }
                 break;
             case GameState.TENTH:
-                if(sInput.toLowerCase().match("choose maths")){
+                if(sInput.toLowerCase().match("maths")){
                     sReply = "Okay Good. But you have to study maths daily for 4 hours. OKAY?";
                     this.stateCur = GameState.TWELVE;
-                }else if(sInput.toLowerCase().match("choose biology")){
+                }else if(sInput.toLowerCase().match("biology")){
                     sReply = "You have to study biology for minimum 4 hours. OKAY?";
                     this.stateCur = GameState.TWELVE;
-                }else if((sInput.toLowerCase().match("choose commerce"))){
+                }else if((sInput.toLowerCase().match("commerce"))){
                     sReply ="okay Good. But you have to play games for 4 hours. OKAY?";
                     this.stateCur = GameState.TWELVE;
                 }else{
-                    sReply ="Decide something bro";
-                    this.stateCur = GameState.TWELVE;
+                    sReply ="Decide something bro. MATHS, BIOLOGY, COMMERCE?";
+                    this.stateCur = GameState.TENTH;
                 }
                 break;
             case GameState.TWELVE:
@@ -58,8 +58,8 @@ module.exports = class Game{
                     sReply = "Okay Good. Focus on Exams. So which entrance exam you are preparing? So many Exams are there like IIT, MEDICAL, CPA?";
                     this.stateCur = GameState.ENTRANCE_EXAM;
                 }else{
-                    sReply ="Think about your life ahead";
-                    this.stateCur = GameState.ENTRANCE_EXAM;
+                    sReply ="Think about your life ahead, OKAY?";
+                    this.stateCur = GameState.TWELVE;
                 }
                 break;
             case GameState.ENTRANCE_EXAM:
@@ -73,8 +73,8 @@ module.exports = class Game{
                     sReply = "In this case exam takes many years to clear it? It want to give? YES or NO?"
                     this.stateCur = GameState.DECISION;
                 }else{
-                    sReply = "Choose one option man? Don't say you want to do fashion designing?";
-                    this.stateCur = GameState.DECISION;
+                    sReply = "Choose one option man? Don't say you want to do fashion designing?Choose one IIT or MEDICAL or CPA?";
+                    this.stateCur = GameState.ENTRANCE_EXAM;
                 }
                 break;
             case GameState.DECISION:
@@ -82,8 +82,8 @@ module.exports = class Game{
                 sReply = "Cool. Prepare for it. Now you next phase of life begins. Its College Time. Which Branch you want to choose? IT? CS? EC? MECH?";
                 this.stateCur = GameState.COLLEGE;
             }else{
-                sReply = "Then What you want to do?";
-                this.stateCur = GameState.COLLEGE;
+                sReply = "Then What you want to do? Decide something YES or NO?";
+                this.stateCur = GameState.DECISION;
             }
             break;
             case GameState.COLLEGE:
@@ -100,8 +100,8 @@ module.exports = class Game{
                     sReply = "Good. Mechanical is good branch.For next phase of life type NEXT.";
                     this.stateCur = GameState.JOB;
                 }else{
-                    sReply = "You seem to have walked in to a party.";
-                    this.stateCur = GameState.JOB;
+                    sReply = "You have not decided anything. Decide anything IT, CS, EC, MECH?";
+                    this.stateCur = GameState.COLLEGE;
                 }
                 break;
             case GameState.JOB:
@@ -109,7 +109,7 @@ module.exports = class Game{
                     sReply = "You enter a new world of adventure ... Now part 2 will begin? To play part 1 again, type PLAY.";
                     this.stateCur = GameState.WELCOMING;
                 }else{
-                    sReply = "THE END!!";
+                    sReply = "THE END!! To play again type PLAY.";
                 }
                 this.stateCur = GameState.WELCOMING;
         }
